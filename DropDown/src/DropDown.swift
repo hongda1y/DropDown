@@ -372,7 +372,7 @@ public final class DropDown: UIView {
      */
 	public var cellClass: DropDownCell.Type? {
 	    didSet {
-	        cellNib = nil // Clear nib when class is set
+	        
 	        if let cellClass = cellClass {
 	            tableView.register(cellClass, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 	            templateCell = nil
