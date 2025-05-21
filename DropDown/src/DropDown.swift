@@ -365,6 +365,22 @@ public final class DropDown: UIView {
 		}
 	}
 
+   /**
+     The NIB to use for DropDownCells
+     
+     Changing the cell nib automatically reloads the drop down.
+     */
+	public var cellClass: DropDownCell.Type? {
+	    didSet {
+	        cellNib = nil // Clear nib when class is set
+	        if let cellClass = cellClass {
+	            tableView.register(cellClass, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
+	            templateCell = nil
+	            reloadAllComponents()
+	        }
+	    }
+	}	
+	
   /// Correctly specify Bundle for Swift Packages
   fileprivate static var bundle: Bundle {
     #if SWIFT_PACKAGE
